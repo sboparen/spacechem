@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+SC=~/.local/share/Zachtronics\ Industries/SpaceChem
+rm -f upload*.zip
+for src in "$SC"/save/*; do
+  base="$(basename "$src" .user)"
+  dst="upload$base.zip"
+  zip -9 "$dst" "$src"
+done
+du -h upload*.zip

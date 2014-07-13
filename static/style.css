@@ -1,0 +1,34 @@
+body { font-size: large; }
+h1 { font-size: x-large; }
+table {
+  border-spacing: 0;
+  border-color: #000;
+  border-width: 1px 1px 0 0;
+  border-style: solid;
+}
+td, th {
+  margin: 0;
+  border-color: #000;
+  border-width: 0 0 1px 1px;
+  border-style: solid;
+  padding: 0.5em;
+  text-align: center;
+}
+p.text {
+  max-width: 40em;
+}
+.new { color: blue; }
+.tie { color: green; }
+.contended { color: darkred; }
+.unsolved { color: darkred; }
+
+.grade_5star { color:teal; font-weight:bold; }
+.grade_4star { color:green; font-weight:bold; }
+.grade_3star { color:green; }
+.grade_2star { color:seagreen; }
+.grade_1star { color:olive; }
+.grade_S { }
+.grade_A { color:darkred; }
+.grade_B { color:darkgoldenrod; }
+.grade_C { color:green; }
+.grade_D { color:purple; }
