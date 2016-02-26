@@ -6,6 +6,9 @@ Scripts to enhance the experience of the game
 
 The main feature is the generation of a web page based on your
 uploaded solutions on [SolutionNet](http://spacechem.net/).
+Unfortunately, SolutionNet is gone, so these scripts aren't
+particularly useful anymore.
+
 It all started when I decided to try to get my cycle count within
 a factor of two of the best known solution on every level.
 This turned out to be much harder than I thought, and also difficult
