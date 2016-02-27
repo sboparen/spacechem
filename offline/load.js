@@ -1,7 +1,6 @@
-var loadInput = document.getElementById('loadInput');
 var loadDebug = document.getElementById('loadDebug');
 
-var tableCreate = function () {
+tableCreate = function () {
     function valconcat(vals, tagName) {
         if (vals.length === 0) return '';
         var open = '<'+tagName+'>', close='</'+tagName+'>';
@@ -17,10 +16,9 @@ var tableCreate = function () {
     }
 }();
 
-loadInput.onchange = function() {
-    var f = loadInput.files[0];
+loadFromFile = function(f, next) {
     var r = new FileReader();
-    var db;
+    var db, rows = [];
     r.onload = function() {
         var Uints = new Uint8Array(r.result);
         db = new SQL.Database(Uints);
@@ -35,7 +33,6 @@ loadInput.onchange = function() {
             loadDebug.innerHTML = "";
             loadDebug.appendChild(tableCreate(raw[0].columns, raw[0].values));
         }
-        var rows = [];
         for(var i=0; i<raw[0].values.length; i++) {
             var row = {};
             for(var j=0; j<raw[0].columns.length; j++) {
@@ -44,6 +41,7 @@ loadInput.onchange = function() {
             rows.push(row);
         }
         console.log("Got " + rows.length + " rows.");
+        next(rows);
     }
     r.readAsArrayBuffer(f);
 }
