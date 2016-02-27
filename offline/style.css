@@ -1,0 +1,23 @@
+body {
+    font-size: large;
+}
+h1 {
+    font-size: x-large;
+}
+table {
+    border-spacing: 0;
+    border-color: #000;
+    border-width: 1px 1px 0 0;
+    border-style: solid;
+}
+td, th {
+    margin: 0;
+    border-color: #000;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    padding: 0.5em;
+    text-align: center;
+}
+p.text {
+    max-width: 40em;
+}

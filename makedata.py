@@ -32,6 +32,13 @@ for level in levels:
     level['planet'] = pnum_from_num(level['number'])
 levels.sort(key=lambda level: (level['planet'], level['number']))
 
+# Get the cycle records from saved SolutionNet pages.
+from defunct.net.entry import parse_page
+for level in levels:
+    with open('defunct/pages/cycles/%s.html' % level['number']) as f:
+        entries = parse_page(f.read(), level_page='dummy')
+        level['cycleTarget'] = entries[0].cycles
+
 # Write out the data as JSON.
 with open('offline/data.js', 'w') as f:
     data = json.dumps(levels, indent=4, sort_keys=True)

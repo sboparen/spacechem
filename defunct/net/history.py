@@ -6,7 +6,7 @@ import pygit2
 ### Also assume the pages git repository has already been made,
 ### and has at least one commit.
 our_git = pygit2.discover_repository('.')
-pages_git = os.path.join(our_git, '../pages/.git')
+pages_git = os.path.join(our_git, '../defunct/pages/.git')
 repo = pygit2.Repository(pages_git)
 dummy = repo.head
 
