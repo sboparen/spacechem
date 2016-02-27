@@ -1,5 +1,6 @@
-var loadElement = document.getElementById('load');
-var outputElement = document.getElementById('output');
+var loadInput = document.getElementById('loadInput');
+var loadDebug = document.getElementById('loadDebug');
+
 var tableCreate = function () {
     function valconcat(vals, tagName) {
         if (vals.length === 0) return '';
@@ -15,9 +16,11 @@ var tableCreate = function () {
         return tbl;
     }
 }();
-loadElement.onchange = function() {
-    var f = loadElement.files[0];
+
+loadInput.onchange = function() {
+    var f = loadInput.files[0];
     var r = new FileReader();
+    var db;
     r.onload = function() {
         var Uints = new Uint8Array(r.result);
         db = new SQL.Database(Uints);
@@ -27,9 +30,11 @@ loadElement.onchange = function() {
             console.log(r.error.message);
             return;
         }
-        var raw = db.exec("select * from Level;");
-        outputElement.innerHTML = "";
-        outputElement.appendChild(tableCreate(raw[0].columns, raw[0].values));
+        var raw = db.exec("select * from Level order by id;");
+        if(window.location.href.indexOf("?debug") > -1) {
+            loadDebug.innerHTML = "";
+            loadDebug.appendChild(tableCreate(raw[0].columns, raw[0].values));
+        }
         var rows = [];
         for(var i=0; i<raw[0].values.length; i++) {
             var row = {};
