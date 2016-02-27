@@ -5,17 +5,16 @@ var displayLevels = function() {
     var rows = [];
     for(var i=0; i<levels.length; i++) {
         var level = levels[i];
+        row = [level.number + ": " + level.name,
+               level.cycleTarget];
         if(level.cycleBest < Infinity) {
-            rows.push([level.name,
-                       level.cycleTarget,
-                       level.cycleBest,
-                       level.cycleExcessPercent + "%"]);
+            row.push(level.cycleBest);
+            row.push(level.cycleExcessPercent + "%");
         } else {
-            rows.push([level.name,
-                       level.cycleTarget,
-                       "unsolved",
-                       ""]);
+            row.push("unsolved");
+            row.push("");
         }
+        rows.push(row);
     }
     levelsArea.innerHTML = "";
     levelsArea.appendChild(tableCreate(columns, rows));

@@ -1,16 +1,5 @@
 resetLevels = function() {
-    levels = [
-        {
-            id: "research-example-1",
-            name: "1-1: Of Pancakes and Spaceships",
-            cycleTarget: 45,
-        },
-        {
-            id: "research-tutorial-1",
-            name: "1-2: Slightly Different",
-            cycleTarget: 45,
-        }
-    ]
+    levels = levelData.slice();
     levelById = {}
     for(var i=0; i<levels.length; i++) {
         levels[i].cycleBest = Infinity;
