@@ -20,6 +20,9 @@ var computeStats = function() {
 }
 
 mergeIntoLevels = function(rows) {
+    for(var i=0; i<levels.length; i++) {
+        levels[i].cycleBestNew = false;
+    }
     for(var i=0; i<rows.length; i++) {
         var row = rows[i];
         if(!row.passed) continue;
@@ -32,6 +35,7 @@ mergeIntoLevels = function(rows) {
         }
         if(row.best_cycles < level.cycleBest) {
             level.cycleBest = row.best_cycles;
+            level.cycleBestNew = true;
         }
     }
     computeStats();

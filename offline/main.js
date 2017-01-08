@@ -8,7 +8,11 @@ var displayLevels = function() {
         row = [level.number + ": " + level.name,
                level.cycleTarget];
         if(level.cycleBest < Infinity) {
-            row.push(level.cycleBest);
+            if(level.cycleBestNew) {
+                row.push(level.cycleBest + "*");
+            } else {
+                row.push(level.cycleBest);
+            }
             row.push(level.cycleExcessPercent + "%");
         } else {
             row.push("unsolved");
@@ -20,6 +24,13 @@ var displayLevels = function() {
     levelsArea.appendChild(tableCreate(columns, rows));
 }
 
+var resetButton = document.getElementById("resetButton");
+resetButton.onclick = function() {
+    resetLevels();
+    displayLevels();
+}
+resetLevels();
+
 var loadInput = document.getElementById("loadInput");
 loadInput.onchange = function() {
     loadFromFile(loadInput.files[0], function(rows) {
@@ -27,5 +38,3 @@ loadInput.onchange = function() {
         displayLevels();
     });
 }
-
-resetLevels();
